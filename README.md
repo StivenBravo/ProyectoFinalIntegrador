@@ -29,8 +29,8 @@ Sistema web para la gestión integral de consultas médicas, permitiendo el regi
 
 1. **Clonar el repositorio**
    ```bash
-   git clone https://github.com/StivenBravo/ProyectoIntegrador.git
-   cd ProyectoIntegrador
+   git clone https://github.com/StivenBravo/ProyectoInalIntegrador.git
+   cd ProyectoFinalIntegrador
    ```
 
 2. **Instalar dependencias**
