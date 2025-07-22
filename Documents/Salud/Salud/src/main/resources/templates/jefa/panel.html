@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Jefa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+        h4, h5 {
+            color: #003366;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        table th, table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="mb-0">Panel de Jefa</h4>
+        <a href="/cerrar-sesion" class="btn btn-outline-danger">Cerrar sesión</a>
+    </div>
+
+    <div class="card p-4 mb-4">
+        <h5>Obstetras Registrados</h5>
+        <table class="table table-hover table-bordered mt-3">
+            <thead class="table-primary">
+            <tr>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Especialidad</th>
+                <th>Usuario</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="obs : ${obstetras}">
+                <td th:text="${obs.usuario.nombre}">Nombre</td>
+                <td th:text="${obs.usuario.dni}">DNI</td>
+                <td th:text="${obs.especialidad.nombre}">Especialidad</td>
+                <td th:text="${obs.usuario.username}">Username</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card p-4">
+        <h5>Pacientes Registrados</h5>
+        <table class="table table-striped table-bordered mt-3">
+            <thead class="table-dark">
+            <tr>
+                <th>Paciente</th>
+                <th>DNI</th>
+                <th>Especialidad</th>
+                <th>Fecha de Atención</th>
+                <th>Tipo de Atención</th>
+                <th>Obstetra</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${pacientes}">
+                <td th:text="${p.nombre}">Nombre</td>
+                <td th:text="${p.dni}">DNI</td>
+                <td th:text="${p.especialidad.nombre}">Especialidad</td>
+                <td th:text="${p.fechaAtencion}">Fecha</td>
+                <td th:text="${p.tipoAtencion}">Tipo</td>
+                <td th:text="${p.obstetra.usuario.nombre}">Obstetra</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

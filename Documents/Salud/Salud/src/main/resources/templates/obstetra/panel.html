@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Obstetra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-4">
+    <h4 class="mb-4">Panel de Obstetra</h4>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a href="/obstetra/registrar-paciente" class="btn btn-success">Registrar Nuevo Paciente</a>
+        <a href="/cerrar-sesion" class="btn btn-outline-danger">Cerrar sesión</a>
+    </div>
+
+    <div th:if="${#lists.isEmpty(pacientes)}">
+        <div class="alert alert-info">No hay pacientes registrados aún.</div>
+    </div>
+
+    <table class="table table-bordered table-hover bg-white" th:if="${!#lists.isEmpty(pacientes)}">
+        <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>Fecha Registro</th>
+            <th>Especialidad</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="paciente : ${pacientes}">
+            <td th:text="${paciente.nombre}">Nombre</td>
+            <td th:text="${paciente.dni}">DNI</td>
+            <td th:text="${paciente.fechaRegistro}">Fecha</td>
+            <td th:text="${paciente.especialidad.nombre}">Especialidad</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
